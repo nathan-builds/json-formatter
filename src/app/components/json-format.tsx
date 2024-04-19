@@ -10,6 +10,8 @@ import { Label } from '@/components/ui/label';
 import { DownloadIcon, TrashIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FontSizeChooser } from '@/components/font-size-chooser';
+import { useTheme } from 'next-themes';
+import { Card } from '@/components/ui/card';
 
 
 export const JsonFormat = () => {
@@ -17,6 +19,7 @@ export const JsonFormat = () => {
     const [text, setText] = React.useState('');
     const [fontSize, setFontSize] = React.useState(12);
     const [liveFormatting, setLiveFormatting] = React.useState(true);
+    const { theme } = useTheme();
 
 
     const fontSizeTheme = EditorView.theme({
@@ -58,7 +61,8 @@ export const JsonFormat = () => {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <Card className="flex flex-col items-center border-none">
+
             <div className="flex  w-3/4  gap-5 h-10 items-center justify-between p-1 ">
                 <div className="flex items-center space-x-2 ">
                     <Switch checked={liveFormatting} onClick={() => setLiveFormatting(!liveFormatting)}/>
@@ -76,21 +80,21 @@ export const JsonFormat = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center gap-10 w-full">
-                <div className="m-5 w-3/4 min-h-[600px] bg-white rounded-lg border-[1px] ">
+                <div className="m-5 w-3/4 min-h-[600px]  rounded-lg border-[1px] ">
                     <CodeMirror
                         className="p-2"
                         value={text}
                         onChange={onTextChange}
                         extensions={[json(), EditorView.lineWrapping, fontSizeTheme]}
                         height={'600px'}
-                        theme={'light'}
+                        theme={theme === 'light' ? 'light' : 'dark'}
 
                     />
                 </div>
 
             </div>
             <Button className="self-center w-28 mb-10" onClick={() => formatJSON(text)}>Format JSON</Button>
-        </div>
+        </Card>
 
     );
 };
