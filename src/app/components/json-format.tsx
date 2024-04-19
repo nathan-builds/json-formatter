@@ -1,7 +1,7 @@
 'use client';
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
 import { useToast } from '@/components/ui/use-toast';
@@ -16,9 +16,9 @@ import { Card } from '@/components/ui/card';
 
 export const JsonFormat = () => {
 
-    const [text, setText] = React.useState('');
-    const [fontSize, setFontSize] = React.useState(12);
-    const [liveFormatting, setLiveFormatting] = React.useState(true);
+    const [text, setText] = useState('');
+    const [fontSize, setFontSize] = useState(12);
+    const [liveFormatting, setLiveFormatting] = useState(true);
     const { theme } = useTheme();
 
 
@@ -61,7 +61,7 @@ export const JsonFormat = () => {
     };
 
     return (
-        <Card className="flex flex-col items-center border-none">
+        <Card className="flex flex-col items-center border-none min-h-screen">
 
             <div className="flex  w-3/4  gap-5 h-10 items-center justify-between p-1 ">
                 <div className="flex items-center space-x-2 ">
@@ -80,13 +80,13 @@ export const JsonFormat = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center gap-10 w-full">
-                <div className="m-5 w-3/4 min-h-[600px]  rounded-lg border-[1px] ">
+                <div className="m-5 w-3/4   rounded-lg border-[1px] ">
                     <CodeMirror
                         className="p-2"
                         value={text}
                         onChange={onTextChange}
                         extensions={[json(), EditorView.lineWrapping, fontSizeTheme]}
-                        height={'600px'}
+                         height={'80vh'}
                         theme={theme === 'light' ? 'light' : 'dark'}
 
                     />
