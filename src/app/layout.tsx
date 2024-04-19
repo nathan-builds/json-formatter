@@ -3,12 +3,14 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/app/providers';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'JSON Formatter',
-    description: 'JSON formatter and validator',
+    description: 'JSON formatter and validator'
 };
 
 export default function RootLayout({
@@ -24,6 +26,7 @@ export default function RootLayout({
             <Toaster/>
         </Providers>
         </body>
+        <GoogleAnalytics gaId="G-LVCJB2DME7"/>
         </html>
     );
 }
