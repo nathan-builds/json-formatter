@@ -1,7 +1,7 @@
-import { Navbar } from '@/app/components/navbar';
+import { Navbar } from '@/components/navbar';
 import React from 'react';
-import { JsonFormat } from '@/app/components/json-format';
-import { Footer } from '@/app/components/footer';
+import { JsonFormat } from '@/components/json-format';
+import { Footer } from '@/components/footer';
 import { Card } from '@/components/ui/card';
 
 export default function Home() {

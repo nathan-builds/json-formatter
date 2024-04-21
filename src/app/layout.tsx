@@ -22,7 +22,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
         <body className={inter.className}>
         <Providers>
-            <main className="bg-[#fafafa]">{children}</main>
+            <main className="">{children}</main>
             <Toaster/>
         </Providers>
         </body>
